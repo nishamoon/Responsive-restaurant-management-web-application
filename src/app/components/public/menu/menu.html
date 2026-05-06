@@ -1,0 +1,38 @@
+<section class="section-padding menu-page">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="brand-font">Culinary Delights</h2>
+      <p>Discover our meticulously crafted menu items.</p>
+    </div>
+
+    <div class="filter-bar">
+      <button 
+        *ngFor="let cat of categories" 
+        (click)="selectCategory(cat)"
+        [class.active]="selectedCategory() === cat"
+        class="filter-btn"
+      >
+        {{ cat }}
+      </button>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-item-card" *ngFor="let item of filteredMenu()">
+        <div class="item-image" [style.backgroundImage]="'url(' + item.image + ')'">
+          <span class="category-badge">{{ item.category }}</span>
+          <span class="veg-badge" *ngIf="item.isVeg">Veg</span>
+        </div>
+        <div class="item-details">
+          <div class="item-header">
+            <h3>{{ item.name }}</h3>
+            <span class="price">${{ item.price.toFixed(2) }}</span>
+          </div>
+          <p>{{ item.description }}</p>
+          <button (click)="addToCart(item)" class="btn btn-primary add-to-cart">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

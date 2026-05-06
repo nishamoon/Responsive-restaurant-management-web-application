@@ -1,0 +1,28 @@
+<app-hero 
+  title="The Art of Fine Dining" 
+  subtitle="Experience a symphony of flavors in every bite. Handcrafted with passion by our world-class chefs."
+></app-hero>
+
+<section class="section-padding featured-sections">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="brand-font">Our Specialities</h2>
+      <p>Explore our curated selection of gourmet dishes.</p>
+    </div>
+
+    <div class="category-grid">
+      <div class="category-card" *ngFor="let cat of featuredCategories" [style.backgroundImage]="'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(' + cat.image + ')'">
+        <h3>{{ cat.name }}</h3>
+        <a routerLink="/menu" class="btn btn-outline">View Collection</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding reservation-cta">
+  <div class="container text-center">
+    <h2 class="brand-font">Reserve Your Table</h2>
+    <p>Planning a special evening? Book your table in advance for a seamless experience.</p>
+    <a routerLink="/reservation" class="btn btn-primary">Book Now</a>
+  </div>
+</section>

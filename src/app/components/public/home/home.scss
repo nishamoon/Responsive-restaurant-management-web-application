@@ -1,0 +1,54 @@
+.section-header {
+  margin-bottom: 50px;
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  p {
+    color: #666;
+  }
+}
+
+.text-center { text-align: center; }
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.category-card {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: var(--transition);
+  
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow);
+  }
+}
+
+.reservation-cta {
+  background: var(--secondary);
+  color: white;
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  p {
+    margin-bottom: 30px;
+    opacity: 0.8;
+  }
+}

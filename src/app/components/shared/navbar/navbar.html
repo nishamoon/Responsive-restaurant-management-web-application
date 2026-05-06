@@ -1,0 +1,28 @@
+<nav class="navbar">
+  <div class="container navbar-content">
+    <a routerLink="/" class="logo brand-font">L'ÉLITE <span>GASTRONOMIE</span></a>
+
+    <ul class="nav-links" [class.active]="isMenuOpen">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+      <li><a routerLink="/menu" routerLinkActive="active">Menu</a></li>
+      <li><a routerLink="/reservation" routerLinkActive="active">Reservations</a></li>
+      <li *ngIf="authService.isLoggedIn()"><a routerLink="/admin" routerLinkActive="active">Dashboard</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a routerLink="/cart" class="cart-btn">
+        <span class="icon">🛒</span>
+        <span class="badge" *ngIf="cartService.totalItems() > 0">{{ cartService.totalItems() }}</span>
+      </a>
+      
+      <button class="mobile-toggle" (click)="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      
+      <a *ngIf="!authService.isLoggedIn()" routerLink="/admin/login" class="btn btn-outline login-btn">Admin</a>
+      <button *ngIf="authService.isLoggedIn()" (click)="authService.logout()" class="btn btn-outline">Logout</button>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,15 @@
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h3 class="brand-font">Management</h3>
+    </div>
+    <nav class="sidebar-nav">
+      <a routerLink="/admin/menu" routerLinkActive="active" class="nav-item">Menu Management</a>
+      <a routerLink="/admin/reservations" routerLinkActive="active" class="nav-item">Reservations</a>
+    </nav>
+  </aside>
+
+  <main class="dashboard-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

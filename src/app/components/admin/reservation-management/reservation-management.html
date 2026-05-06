@@ -1,0 +1,51 @@
+<div class="management-container">
+  <div class="header">
+    <h2 class="brand-font">Reservations</h2>
+    <p>Manage incoming table booking requests.</p>
+  </div>
+
+  <div class="table-container">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Details</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let res of reservationService.getReservations()()">
+          <td>
+            <div class="customer-info">
+              <strong>{{ res.customerName }}</strong>
+              <span>{{ res.phone }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="res-details">
+              <span>📅 {{ res.date }}</span>
+              <span>🕒 {{ res.time }}</span>
+              <span>👥 {{ res.guests }} Guests</span>
+            </div>
+          </td>
+          <td>
+            <span class="status-pill" [ngClass]="getStatusClass(res.status)">
+              {{ res.status }}
+            </span>
+          </td>
+          <td>
+            <div class="action-btns">
+              <button *ngIf="res.status === 'Pending'" (click)="updateStatus(res.id, 'Confirmed')" class="confirm-btn">Confirm</button>
+              <button *ngIf="res.status === 'Pending'" (click)="updateStatus(res.id, 'Cancelled')" class="cancel-btn">Cancel</button>
+              <span *ngIf="res.status !== 'Pending'">---</span>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="reservationService.getReservations()().length === 0">
+          <td colspan="4" class="empty-state">No reservations found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="management-container">
+  <div class="header">
+    <h2 class="brand-font">{{ isEditing ? 'Edit Dish' : 'Add New Dish' }}</h2>
+  </div>
+
+  <form [formGroup]="menuForm" (ngSubmit)="onSubmit()" class="admin-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Dish Name</label>
+        <input type="text" formControlName="name">
+      </div>
+      <div class="form-group">
+        <label>Price ($)</label>
+        <input type="number" formControlName="price">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Category</label>
+        <select formControlName="category">
+          <option value="Appetizers">Appetizers</option>
+          <option value="Main Course">Main Course</option>
+          <option value="Desserts">Desserts</option>
+          <option value="Beverages">Beverages</option>
+        </select>
+      </div>
+      <div class="form-group checkbox-group">
+        <label>
+          <input type="checkbox" formControlName="isVeg"> Vegetarian
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Image URL</label>
+      <input type="text" formControlName="image">
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea formControlName="description" rows="2"></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="menuForm.invalid">
+        {{ isEditing ? 'Update Dish' : 'Add to Menu' }}
+      </button>
+      <button type="button" *ngIf="isEditing" (click)="cancelEdit()" class="btn btn-outline">Cancel</button>
+    </div>
+  </form>
+
+  <div class="menu-list-section">
+    <h3 class="brand-font">Current Menu</h3>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Dish</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of menuService.getMenu()()">
+          <td>
+            <div class="dish-cell">
+              <img [src]="item.image" alt="">
+              <span>{{ item.name }}</span>
+            </div>
+          </td>
+          <td>{{ item.category }}</td>
+          <td>${{ item.price.toFixed(2) }}</td>
+          <td>
+            <div class="action-btns">
+              <button (click)="editItem(item)" class="edit-btn">Edit</button>
+              <button (click)="deleteItem(item.id)" class="delete-btn">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

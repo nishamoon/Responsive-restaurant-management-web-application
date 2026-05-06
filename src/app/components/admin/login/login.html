@@ -1,0 +1,25 @@
+<section class="section-padding login-page">
+  <div class="container">
+    <div class="login-card">
+      <h2 class="brand-font">Staff Access</h2>
+      <p>Please enter your credentials to access the management portal.</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" formControlName="username" placeholder="admin">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" placeholder="••••••••">
+        </div>
+        
+        <p class="error-msg" *ngIf="error">{{ error }}</p>
+        
+        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary login-btn">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

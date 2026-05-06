@@ -1,0 +1,42 @@
+.table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.customer-info {
+  display: flex;
+  flex-direction: column;
+  strong { font-size: 0.95rem; }
+  span { font-size: 0.8rem; color: #888; }
+}
+
+.res-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.status-pill {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  &.pending { background: #fff3cd; color: #856404; }
+  &.confirmed { background: #d4edda; color: #155724; }
+  &.cancelled { background: #f8d7da; color: #721c24; }
+}
+
+.confirm-btn { color: #28a745; background: none; border: none; font-weight: 600; cursor: pointer; margin-right: 10px; }
+.cancel-btn { color: #dc3545; background: none; border: none; font-weight: 600; cursor: pointer; }
+
+.empty-state {
+  text-align: center;
+  padding: 40px !important;
+  color: #888;
+}
